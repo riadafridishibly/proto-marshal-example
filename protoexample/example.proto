@@ -1,7 +1,10 @@
-// from: https://github.com/grpc/grpc-go/blob/master/examples/route_guide/routeguide/route_guide.proto
 syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
 option go_package = "github.com/riadafridishibly/proto-marshal-example/protoexample";
 
+// from: https://github.com/grpc/grpc-go/blob/master/examples/route_guide/routeguide/route_guide.proto
 message Point {
   int32 latitude = 1;
   int32 longitude = 2;
@@ -10,4 +13,30 @@ message Point {
 message Rectangle {
   Point lo = 1;
   Point hi = 2;
+}
+
+// from: https://github.com/protocolbuffers/protobuf/blob/main/examples/addressbook.proto
+message Person {
+  string name = 1;
+  int32 id = 2;  // Unique ID number for this person.
+  string email = 3;
+
+  enum PhoneType {
+    MOBILE = 0;
+    HOME = 1;
+    WORK = 2;
+  }
+
+  message PhoneNumber {
+    string number = 1;
+    PhoneType type = 2;
+  }
+
+  repeated PhoneNumber phones = 4;
+
+  google.protobuf.Timestamp last_updated = 5;
+}
+
+message AddressBook {
+  repeated Person people = 1;
 }
