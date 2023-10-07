@@ -1,0 +1,13 @@
+// from: https://github.com/grpc/grpc-go/blob/master/examples/route_guide/routeguide/route_guide.proto
+syntax = "proto3";
+option go_package = "github.com/riadafridishibly/proto-marshal-example/protoexample";
+
+message Point {
+  int32 latitude = 1;
+  int32 longitude = 2;
+}
+
+message Rectangle {
+  Point lo = 1;
+  Point hi = 2;
+}
